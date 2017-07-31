@@ -231,6 +231,14 @@ const User = {
     }]
 };
 
+const Test = {
+  name: 'Test',
+  link: '/test',
+  order: 10,
+  // iconclass: 'ion-radio-waves',
+  imgpath: 'assets/img/icons/levels.svg'
+};
+
 export const menu = [
     Dashboard,
     Cards,
@@ -241,5 +249,6 @@ export const menu = [
     Elements,
     Maps,
     Pages,
-    User
+    User,
+    Test
 ];
