@@ -4,6 +4,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SharedModule } from '../../shared/shared.module';
+import {ChartModule} from 'angular2-highcharts';
 
 import {TestComponent} from './test.component';
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ChartModule
   ],
   declarations: [TestComponent],
   exports: [

@@ -1,24 +1,53 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.scss']
 })
+
 export class TestComponent implements OnInit {
-@Input()
+  chart: Object;
   options: Object;
+  test: string;
+  public myData = [];
+
   constructor() {
+    console.log('test om !');
+
     this.options = {
-      title : { text : 'simple chart' },
+      title: {text: 'simple chart'},
       series: [{
-        data: [29.9, 71.5, 106.4, 129],
+        data: [this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50)],
       }]
     };
+
   }
 
-  ngOnInit() {
-    console.log('test component loaded !');
+  getRandomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  makeid() {
+    let text = '';
+    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 11; i++) {
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+  }
+
+  testEvent() {
+    console.log('button clicked !');
+    this.test = this.makeid();
+    this.myData = [this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50)];
+    //this.chart.series[0].setData(this.myData);
+
+    console.log(this.myData);
+    console.log(this.options['series'].data);
+  }
+
+  ngOnInit(): void {
+  }
 }
