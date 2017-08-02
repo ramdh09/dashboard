@@ -36,5 +36,4 @@ export class DataService {
     return this.http.get(url)
       .map(res => res.json());
   }
-
 }
