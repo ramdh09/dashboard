@@ -12,6 +12,11 @@ export class TestComponent implements OnInit {
   test: string;
   public myData = [];
 
+  saveInstance(chartInstance): void {
+    this.chart = chartInstance;
+    // [load]="saveInstance($event.context)"
+  }
+
   constructor() {
     console.log('test om !');
 
@@ -42,10 +47,11 @@ export class TestComponent implements OnInit {
     console.log('button clicked !');
     this.test = this.makeid();
     this.myData = [this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50), this.getRandomInt(1,50)];
-    //this.chart.series[0].setData(this.myData);
+    // this.chart.series[0].setData(this.myData);
 
     console.log(this.myData);
     console.log(this.options['series'].data);
+    // this.chart.series[0].setData(myData);
   }
 
   ngOnInit(): void {

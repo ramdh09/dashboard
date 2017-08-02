@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule, Http } from '@angular/http';
 import { TranslateService, TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {DataService} from './services/data.service';
 
 import { AppComponent } from './app.component';
 
@@ -35,7 +36,7 @@ export function createTranslateLoader(http: Http) {
             }
         })
     ],
-    providers: [],
+    providers: [DataService],
     bootstrap: [AppComponent]
 })
 export class AppModule { }
