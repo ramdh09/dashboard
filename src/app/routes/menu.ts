@@ -249,14 +249,17 @@ const Report = {
     name: 'Area',
     link: '/report/area'
   }, {
-    name: 'Line',
-    link: '/report/line'
+    name: 'Overview',
+    link: '/report/overview'
   }, {
-    name: 'bar',
-    link: '/report/bar'
+    name: 'People Counter',
+    link: '/report/people-counter'
   }, {
-    name: 'donut',
-    link: '/report/donut'
+    name: 'Tenants',
+    link: '/report/tenants'
+  }, {
+    name: 'Performance Sales',
+    link: '/report/performance-sales'
   }
   ]
 };

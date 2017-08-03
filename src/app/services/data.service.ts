@@ -32,6 +32,10 @@ export class DataService {
     });
   }
 
+  getRandomNumber(min,max){
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
   testHttp(url) {
     return this.http.get(url)
       .map(res => res.json());
