@@ -1,28 +1,40 @@
 <div class="container-fluid">
   <!-- START panel-->
   <div class="card">
-    <div class="card-heading">TRAFFIC VS SPENDING</div>
+    <div class="card-heading">Traffic VS Spending</div>
     <div style="display: block;">
       <canvas baseChart width="300px" height="100px"
-              [datasets]="optionChart1"
+              [datasets]="datasetsChart1"
               [options]="ChartOptions"
+              [labels]="dayLabels"
+              [chartType]="chartType.bar"
       ></canvas>
     </div>
   </div>
   <!-- END panel-->
   <!-- START panel-->
   <div class="card">
-    <div class="card-heading">TRAFFIC</div>
+    <div class="card-heading">Traffic</div>
     <div style="display: block;">
-      <div>DIV CANVAS TRAFFIC</div>
+      <canvas baseChart width="300px" height="100px"
+              [datasets]="datasetsChart2"
+              [options]="ChartOptions2"
+              [labels]="dayLabels"
+              [chartType]="chartType.bar"
+      ></canvas>
     </div>
   </div>
   <!-- END panel-->
   <!-- START panel-->
   <div class="card">
-    <div class="card-heading">SPENDING</div>
+    <div class="card-heading">Spending</div>
     <div style="display: block;">
-      <div>DIV CANVAS SPENDING</div>
+      <canvas baseChart width="300px" height="100px"
+              [datasets]="datasetsChart3"
+              [options]="ChartOptions3"
+              [labels]="dayLabels"
+              [chartType]="chartType.bar"
+      ></canvas>
     </div>
   </div>
   <!-- END panel-->
@@ -30,14 +42,36 @@
   <div class="row">
     <div class="col-md-6" style="margin-bottom: 10px">
       <div class="card">
-        <div class="card-heading">Chart Data</div>
-        <div> CANVAS NEW MEMBER</div>
+        <div class="card-heading">Member</div>
+        <canvas baseChart width="300px" height="100px"
+                [datasets]="datasetsChart4"
+                [options]="ChartOptions4"
+                [labels]="dayLabels"
+                [chartType]="chartType.bar"
+        ></canvas>
       </div>
     </div>
     <div class="col-lg-6">
       <div class="card">
         <div class="card-heading">Vehicle</div>
-        <div> CANVAS VEHICLE</div>
+        <canvas baseChart
+                [datasets]="datasetsChart5"
+                [options]="ChartOptions4"
+                [labels]="dayLabels"
+                [chartType]="chartType.line"
+        ></canvas>
+        <canvas baseChart
+                [datasets]="datasetsChart6"
+                [options]="ChartOptions4"
+                [labels]="dayLabels"
+                [chartType]="chartType.line"
+        ></canvas>
+        <canvas baseChart
+                [datasets]="datasetsChart7"
+                [options]="ChartOptions4"
+                [labels]="dayLabels"
+                [chartType]="chartType.line"
+        ></canvas>
       </div>
     </div>
   </div>
