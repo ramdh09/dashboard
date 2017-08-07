@@ -2,19 +2,25 @@
   <!-- START panel-->
   <div class="card">
     <div class="card-heading">TENANT RANKS</div>
-    <div style="display: block;">
+    <div style="display: block;" class="card-body">
       <div class="row">
-        <div class="col-md-6">DIV CANVAS TENANT RANKS 1</div>
-        <div class="col-md-6">DIV CANVAS TENANT RANKS 2</div>
+        <div class="col-md-6">
+          <canvas baseChart width="450" height="400"
+                  [datasets]="datasetsTenant1"
+                  [options]="ChartOptions"
+                  [chartType]="chartType.horizontalBar"
+                  [labels]="tenantLabels"
+          ></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas baseChart width="450" height="400"
+                  [datasets]="datasetsTenant2"
+                  [options]="ChartOptions"
+                  [chartType]="chartType.horizontalBar"
+                  [labels]="tenantLabels"
+          ></canvas>
+        </div>
       </div>
-    </div>
-  </div>
-  <!-- END panel-->
-  <!-- START panel-->
-  <div class="card">
-    <div class="card-heading">TR VS SYSTEM</div>
-    <div style="display: block;">
-      <div>DIV CANVAS TR VS SYSTEM</div>
     </div>
   </div>
   <!-- END panel-->
@@ -22,23 +28,41 @@
   <div class="card">
     <div class="card-heading">TENANT REVENUE RECORD</div>
     <div style="display: block;">
-      <div>DIV CANVAS TENANT REVENUE</div>
+      <div class="card-body"><canvas baseChart width="800" height="400"
+      [datasets]="datasetsTr"
+                   [options]="ChartOptions"
+                   [chartType]="chartType.bar"
+                   [labels]="dayLabels"
+      >
+      </canvas></div>
     </div>
   </div>
   <!-- END panel-->
   <!-- START panel-->
   <div class="card">
     <div class="card-heading">MEMBER SPENDING</div>
-    <div style="display: block;">
-      <div>DIV CANVAS MEMBER SPENDING</div>
+    <div class="card-body">
+      <div><canvas baseChart width="800" height="400"
+                   [datasets]="datasetsMember"
+                   [options]="ChartOptions"
+                   [chartType]="chartType.bar"
+                   [labels]="dayLabels"
+      >
+      </canvas></div>
     </div>
   </div>
   <!-- END panel-->
   <!-- START panel-->
   <div class="card">
-    <div class="card-heading">TR RECORD VS MEMBER SPENDING</div>
-    <div style="display: block;">
-      <div>DIV CANVAS MEMBER SPENDING</div>
+    <div class="card-heading"></div>
+    <div class="card-body">
+      <div><canvas baseChart width="800" height="400"
+                   [datasets]="datasetsTrMember"
+                   [options]="ChartOptions"
+                   [chartType]="chartType.line"
+                   [labels]="dayLabels"
+      >
+      </canvas></div>
     </div>
   </div>
   <!-- END panel-->
