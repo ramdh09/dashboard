@@ -9,7 +9,7 @@ import $ from "jquery";
 })
 export class PerformanceSalesComponent implements OnInit {
 
-  public dataSales:any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];;
+  public dataSales:any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
   public datasetsSales:any = [{
     label: 'Spending',
     data: this.dataSales
@@ -39,23 +39,23 @@ export class PerformanceSalesComponent implements OnInit {
     horizontalBar: 'horizontalBar'
   };
 
-  clickChart(evt){
-    console.log('chart clicked !')
-    const chart = $('#sales-chart');
-    const activePoints = chart.getElementsAtEvent(evt);
-    const chartData = activePoints[0]['_chart'].config.data;
-    const idx = activePoints[0]['_index'];
-    const label = chartData.labels[idx];
-    const value = chartData.datasets[0].data[idx];
-    const url = "http://example.com/?label=" + label + "&value=" + value;
-    alert(url);
+  public deepThroat(e:any){
+    console.log(e);
+    //$('#loader').addClass('loader-inner ball-grid-pulse');
   }
+  public clickChart(e:any){
+    let indexData = e.active[0]._index;
+    //console.log(e);
+    //console.log(this.dataSales[indexData]);
+    this.deepThroat(this.dataSales[indexData]);
+  }
+
   constructor(public dataservice: DataService) {
-    const chart = $('#sales-chart');
     // TODO : Add drilldown request
   }
 
   ngOnInit() {
+    //$('.loader-inner').loaders();
   }
 
 }

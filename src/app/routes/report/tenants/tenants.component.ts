@@ -40,6 +40,7 @@ export class TenantsComponent implements OnInit {
     data: this.comparisonData,
     label: 'TR Record VS Memebr Spending',
     fill: false,
+    lineTension: 0
   }];
 
   public ChartOptions: any = {
@@ -57,6 +58,72 @@ export class TenantsComponent implements OnInit {
           display: false,
           drawOnChartArea: false
         },
+      }]
+    }
+  };
+
+  public ChartOptionsLine: any = {
+    legend: {
+      position: 'bottom'
+    },
+    scaleShowGridLines: false,
+    responsive: false,
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+      }],
+      yAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+      }]
+    }
+  };
+  public ChartOptionsBar: any = {
+    legend: {
+      position: 'bottom'
+    },
+    scaleShowGridLines: false,
+    responsive: true,
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+      }],
+      yAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+      }]
+    }
+  };
+  public ChartOptionsBarStacked: any = {
+    legend: {
+      position: 'bottom'
+    },
+    scaleShowGridLines: false,
+    responsive: false,
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+        stacked: true
+      }],
+      yAxes: [{
+        gridLines: {
+          display: false,
+          drawOnChartArea: false
+        },
+        stacked: true
       }]
     }
   };

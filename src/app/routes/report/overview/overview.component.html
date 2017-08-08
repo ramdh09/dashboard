@@ -2,10 +2,10 @@
   <!-- START panel-->
   <div class="card">
     <div class="card-heading">Traffic VS Spending</div>
-    <div style="display: block;">
-      <canvas baseChart width="300px" height="100px"
+    <div class="card-body">
+      <canvas baseChart
               [datasets]="datasetsChart1"
-              [options]="ChartOptions"
+              [options]="ChartOptionsMultiAxis"
               [labels]="dayLabels"
               [chartType]="chartType.bar"
       ></canvas>
@@ -15,10 +15,10 @@
   <!-- START panel-->
   <div class="card">
     <div class="card-heading">Traffic</div>
-    <div style="display: block;">
-      <canvas baseChart width="300px" height="100px"
+    <div class="card-body">
+      <canvas baseChart
               [datasets]="datasetsChart2"
-              [options]="ChartOptions2"
+              [options]="ChartOptionsBar"
               [labels]="dayLabels"
               [chartType]="chartType.bar"
       ></canvas>
@@ -28,10 +28,10 @@
   <!-- START panel-->
   <div class="card">
     <div class="card-heading">Spending</div>
-    <div style="display: block;">
-      <canvas baseChart width="300px" height="100px"
+    <div class="card-body">
+      <canvas baseChart
               [datasets]="datasetsChart3"
-              [options]="ChartOptions3"
+              [options]="ChartOptionsBar"
               [labels]="dayLabels"
               [chartType]="chartType.bar"
       ></canvas>
@@ -40,40 +40,55 @@
   <!-- END panel-->
   <!-- START row-->
   <div class="row">
-    <div class="col-md-6" style="margin-bottom: 10px">
+    <div class="col-md-6">
       <div class="card">
         <div class="card-heading">Member</div>
-        <canvas baseChart width="300px" height="100px"
-                [datasets]="datasetsChart4"
-                [options]="ChartOptions4"
-                [labels]="dayLabels"
-                [chartType]="chartType.bar"
-        ></canvas>
+        <div class="card-body">
+          <canvas baseChart width="400px" height="300px"
+                  [datasets]="datasetsChart4"
+                  [options]="ChartOptionsBarStacked"
+                  [labels]="dayLabels"
+                  [chartType]="chartType.bar"
+          ></canvas>
+        </div>
       </div>
     </div>
     <div class="col-lg-6">
       <div class="card">
         <div class="card-heading">Vehicle</div>
-        <canvas baseChart
-                [datasets]="datasetsChart5"
-                [options]="ChartOptions4"
-                [labels]="dayLabels"
-                [chartType]="chartType.line"
-        ></canvas>
-        <canvas baseChart
-                [datasets]="datasetsChart6"
-                [options]="ChartOptions4"
-                [labels]="dayLabels"
-                [chartType]="chartType.line"
-        ></canvas>
-        <canvas baseChart
-                [datasets]="datasetsChart7"
-                [options]="ChartOptions4"
-                [labels]="dayLabels"
-                [chartType]="chartType.line"
-        ></canvas>
+        <div class="card-body">
+          <canvas baseChart width="400px" height="300px"
+                  [datasets]="datasetsChart5"
+                  [options]="ChartOptionsLine"
+                  [labels]="dayLabels"
+                  [chartType]="chartType.line"
+          ></canvas>
+        </div>
       </div>
     </div>
   </div>
   <!-- END row-->
+  <div class="card">
+    <div class="card-heding">Vehicle</div>
+    <div class="card-body m">
+      <div class="row">
+        <div class="col-md-6">
+          <canvas baseChart width="400px" height="300px"
+                  [datasets]="datasetsChart6"
+                  [options]="ChartOptionsLine"
+                  [labels]="dayLabels"
+                  [chartType]="chartType.line"
+          ></canvas>
+        </div>
+        <div class="col-md-6">
+          <canvas baseChart width="400px" height="300px"
+                  [datasets]="datasetsChart7"
+                  [options]="ChartOptionsLine"
+                  [labels]="dayLabels"
+                  [chartType]="chartType.line"
+          ></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,17 +1,46 @@
 <div class="container-fluid">
   <!-- START panel-->
   <div class="card">
-    <div class="card-heading">TENANT RANKS</div>
+    <div class="card-heading">People Counter</div>
     <div style="display: block;">
       <div class="row">
         <div class="col-md-6">
-          <div>CHART PEOPLE TRAFFIC</div>
-          <div>CHART PEOPLE SPENDING</div>
+          <div class="m">
+            <canvas baseChart width="500" height="300"
+                    [datasets]="datasetsTraffic"
+                    [options]="ChartOptionsBar"
+                    [chartType]="chartType.bar"
+                    [labels]="dayLabels">
+            </canvas>
+          </div>
+          <div class="m">
+            <canvas baseChart width="500" height="300"
+                       [datasets]="datasetsSpending"
+                       [options]="ChartOptionsBar"
+                       [chartType]="chartType.bar"
+                       [labels]="dayLabels">
+          </canvas>
+          </div>
         </div>
         <div class="col-md-6">
-          <div>CHART CARS</div>
-          <div>CHART MOTORBIKES</div>
-          <div>CHART TAXI</div>
+          <div class="m"><canvas baseChart width="400" height="200"
+                       [datasets]="datasetsCars"
+                       [options]="ChartOptionsLine"
+                       [chartType]="chartType.line"
+                       [labels]="dayLabels">
+          </canvas></div>
+          <div class="m"><canvas baseChart width="400" height="200"
+                       [datasets]="datasetsMotorbikes"
+                       [options]="ChartOptionsLine"
+                       [chartType]="chartType.line"
+                       [labels]="dayLabels">
+          </canvas></div>
+          <div class="m"><canvas baseChart width="400" height="200"
+                       [datasets]="datasetsTaxi"
+                       [options]="ChartOptionsLine"
+                       [chartType]="chartType.line"
+                       [labels]="dayLabels">
+          </canvas></div>
         </div>
       </div>
     </div>
@@ -21,7 +50,12 @@
   <div class="card">
     <div class="card-heading">TRAFFIC VS SPENDING</div>
     <div style="display: block;">
-      <div>DIV CANVAS TRAFFIC VS SPENDING</div>
+      <div class="m"><canvas baseChart width="800" height="400"
+                   [datasets]="datasetsSpendingTraffic"
+                   [options]="ChartOptionsMultiAxis"
+                   [chartType]="chartType.bar"
+                   [labels]="dayLabels">
+      </canvas></div>
     </div>
   </div>
   <!-- END panel-->
