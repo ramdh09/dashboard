@@ -38,16 +38,23 @@ export class PerformanceSalesComponent implements OnInit {
     line: 'line',
     horizontalBar: 'horizontalBar'
   };
-
-  public deepThroat(e:any){
-    console.log(e);
-    //$('#loader').addClass('loader-inner ball-grid-pulse');
+  public drilldownLevel: any = {
+    monthly: 'monthly',
+    weekly: 'weekly',
+    daily: 'daily',
+    hourly: 'hourly',
+  };
+  public deepThroat(params:any){
+    console.log(params);
   }
   public clickChart(e:any){
     let indexData = e.active[0]._index;
-    //console.log(e);
-    //console.log(this.dataSales[indexData]);
-    this.deepThroat(this.dataSales[indexData]);
+    let currentDataLabels = this.categoriesLabels[indexData];
+    let currentDataValue = this.dataSales[indexData];
+    let drilldownParams:any;
+    // TODO : Create drilldown function
+    console.log(e);
+    console.log(e.datasets);
   }
 
   constructor(public dataservice: DataService) {
