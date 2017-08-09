@@ -48,10 +48,6 @@ export class PerformanceSalesComponent implements OnInit {
     hourly: 'hourly',
   };
 
-  public deepThroat(params: any) {
-    console.log(params);
-  }
-
   public clickChart(e: any) {
     let indexData = e.active[0]._index;
     let currentDataLabels = this.categoriesLabels[indexData];
@@ -72,6 +68,7 @@ export class PerformanceSalesComponent implements OnInit {
 
       this.testChart.datasets[0].data = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
       this.testChart.labels = this.weeklyLabels;
+      this.testChart.options = this.chartOption;
       this.testChart.ngOnInit();
     }
   };
@@ -81,8 +78,7 @@ export class PerformanceSalesComponent implements OnInit {
   }
 
   ngOnInit() {
-    //$('.loader-inner').loaders();
-    console.log(this.testChart);
+
   }
 
 }
