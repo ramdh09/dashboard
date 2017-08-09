@@ -5,7 +5,7 @@
     <div style="display: block;">
       <div id="loader">
         <div class="card-body">
-          <canvas id="sales-chart" baseChart width="800" height="400"
+          <canvas id="sales-chart" #testChart='base-chart' baseChart width="800" height="400"
                   [datasets]="datasetsSales"
                   [options]="ChartOptions"
                   [chartType]="chartType.bar"

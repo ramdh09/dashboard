@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit, OnChanges} from '@angular/core';
 import {DataService} from '../../../services/data.service';
+import {BaseChartDirective} from 'ng2-charts/ng2-charts';
 import $ from "jquery";
 
 @Component({
@@ -8,14 +9,16 @@ import $ from "jquery";
   styleUrls: ['./performance-sales.component.scss']
 })
 export class PerformanceSalesComponent implements OnInit {
+  @ViewChild('testChart') public testChart: BaseChartDirective;
 
-  public dataSales:any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
-  public datasetsSales:any = [{
+  public dataSales: any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
+  public datasetsSales: any = [{
     label: 'Spending',
     data: this.dataSales
   }];
   public categoriesLabels: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public chartOption:any = {
+  public weeklyLabels: any = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
+  public chartOption: any = {
     scaleShowGridLines: false,
     responsive: false,
     scales: {
@@ -44,18 +47,34 @@ export class PerformanceSalesComponent implements OnInit {
     daily: 'daily',
     hourly: 'hourly',
   };
-  public deepThroat(params:any){
+
+  public deepThroat(params: any) {
     console.log(params);
   }
-  public clickChart(e:any){
+
+  public clickChart(e: any) {
     let indexData = e.active[0]._index;
     let currentDataLabels = this.categoriesLabels[indexData];
     let currentDataValue = this.dataSales[indexData];
-    let drilldownParams:any;
+    let drilldownParams: any;
+    let _chart = this.testChart;
+    this.reloadChart();
+
+    console.log(this.testChart);
     // TODO : Create drilldown function
-    console.log(e);
-    console.log(e.datasets);
   }
+
+  // Call this function after make an async request for update data & labels
+  reloadChart() {
+    if (this.testChart !== undefined) {
+      this.testChart.chart.destroy();
+      this.testChart.chart = 0;
+
+      this.testChart.datasets[0].data = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
+      this.testChart.labels = this.weeklyLabels;
+      this.testChart.ngOnInit();
+    }
+  };
 
   constructor(public dataservice: DataService) {
     // TODO : Add drilldown request
@@ -63,6 +82,7 @@ export class PerformanceSalesComponent implements OnInit {
 
   ngOnInit() {
     //$('.loader-inner').loaders();
+    console.log(this.testChart);
   }
 
 }
