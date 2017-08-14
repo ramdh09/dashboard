@@ -56,7 +56,7 @@ export class PerformanceSalesComponent implements OnInit {
     let _chart = this.testChart;
     this.reloadChart();
 
-    console.log(this.testChart);
+    //console.log(this.testChart);
     // TODO : Create drilldown function
   }
 
@@ -65,10 +65,10 @@ export class PerformanceSalesComponent implements OnInit {
     if (this.testChart !== undefined) {
       this.testChart.chart.destroy();
       this.testChart.chart = 0;
-
-      this.testChart.datasets[0].data = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
-      this.testChart.labels = this.weeklyLabels;
-      this.testChart.options = this.chartOption;
+      var request = this.dataservice.getQuery('spending-data');
+      //this.testChart.datasets[0].data = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
+      // this.testChart.labels = this.weeklyLabels;
+      // this.testChart.options = this.chartOption;
       this.testChart.ngOnInit();
     }
   };
