@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {Headers, Http} from '@angular/http';
+import { Response, Headers, Http} from '@angular/http';
 var swal = require('sweetalert');
 
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class DataService {
@@ -16,19 +18,16 @@ export class DataService {
 
   public backendUrl: string = 'http://demo9273001.mockable.io/';
 
-  private handleError(error: any): Promise<any> {
+  handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
-    // return Promise.reject(error.message || error);
     console.log(error);
     return swal('Error !', error, 'error');
   }
 
   getQuery(url: string) {
     return this.http.get(this.backendUrl + url)
-      .toPromise()
-      .then(response => {
-        return response.json().data
-      })
+      .map((response: Response) => response.json())
+      .do(data => data)
       .catch(this.handleError);
   }
 
