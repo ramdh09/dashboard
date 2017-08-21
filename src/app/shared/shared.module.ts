@@ -19,7 +19,6 @@ import {TimepickerModule} from 'ngx-bootstrap/timepicker';
 import {TooltipModule} from 'ngx-bootstrap/tooltip';
 import {TypeaheadModule} from 'ngx-bootstrap/typeahead';
 import {DatepickerModule} from 'ngx-bootstrap/datepicker';
-import {HighchartModule} from './highcharts.module';
 
 import {EasypiechartDirective} from './directives/easypiechart/easypiechart.directive';
 import {FlotDirective} from './directives/flot/flot.directive';
@@ -31,6 +30,7 @@ import {RippleDirective} from './directives/ripple/ripple.directive';
 
 import {SettingsService} from './settings/settings.service';
 import {SettingsComponent} from './settings/settings.component';
+import { ParticlesModule } from 'angular-particle';
 
 
 // https://angular.io/styleguide#!#04-10
@@ -55,7 +55,7 @@ import {SettingsComponent} from './settings/settings.component';
     TimepickerModule.forRoot(),
     TooltipModule.forRoot(),
     TypeaheadModule.forRoot(),
-    HighchartModule
+    ParticlesModule
   ],
   providers: [
     SettingsService
@@ -99,7 +99,6 @@ import {SettingsComponent} from './settings/settings.component';
     KnobDirective,
     RippleDirective,
     SettingsComponent,
-    HighchartModule
   ]
 })
 

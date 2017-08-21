@@ -1,6 +1,8 @@
 import {Component, ViewChild, OnInit, OnChanges} from '@angular/core';
 import {DataService} from '../../../services/data.service';
 import {BaseChartDirective} from 'ng2-charts/ng2-charts';
+var swal = require('sweetalert');
+declare var $: any;
 
 @Component({
   selector: 'app-performance-sales',
@@ -49,20 +51,24 @@ export class PerformanceSalesComponent implements OnInit {
   public dataSpending: any;
 
   public clickChart(e: any) {
-    console.log('Before async request : ' + this.dataSpending);
-    let indexData = e.active[0]._index;
-    this.dataservice.getQuery('spending-data')
-      .subscribe(
-        data => {
-          this.dataSpending = data;
-          this.reloadChart();
-          console.log(indexData);
-        },
-        error => {
-          this.dataservice.handleError
-        }
-      )
-    ;
+    try {
+      let indexData = e.active[0]._index;
+      this.dataservice.getQuery('spending-data')
+        .subscribe(
+          data => {
+            this.dataSpending = data;
+            this.reloadChart();
+          },
+          error => {
+            this.dataservice.handleError
+          }
+        )
+      ;
+    }
+    catch (err){
+      console.log(err.message);
+      swal('Please click on chart series !');
+    }
     // TODO : Create drilldown function
   }
 
@@ -71,8 +77,6 @@ export class PerformanceSalesComponent implements OnInit {
     if (this.testChart !== undefined) {
       this.testChart.chart.destroy();
       this.testChart.chart = 0;
-      console.log(this.testChart.datasets[0].data);
-      console.log(this.dataSpending.data.spending);
       this.testChart.datasets[0].data = this.dataSpending.data.spending;
       this.testChart.labels = this.dataSpending.data.categories;
       this.testChart.ngOnInit();
@@ -84,7 +88,7 @@ export class PerformanceSalesComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    $('.loader-inner').loaders();
   }
 
 }
