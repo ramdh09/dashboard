@@ -57,6 +57,9 @@ const Forms = {
   }, {
     name: 'Upload',
     link: '/forms/upload'
+  }, {
+    name: 'Register',
+    link: '/forms/register'
   }]
 };
 
@@ -228,6 +231,9 @@ const User = {
   }, {
     name: 'Recover',
     link: '/recover'
+  }, {
+    name: 'Register',
+    link: '/register'
   }]
 };
 

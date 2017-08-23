@@ -12,6 +12,7 @@ import { AdvancedComponent } from './advanced/advanced.component';
 import { MaterialComponent } from './material/material.component';
 import { EditorsComponent } from './editors/editors.component';
 import { UploadComponent } from './upload/upload.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
     { path: 'classic', component: ClassicComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
     { path: 'advanced', component: AdvancedComponent },
     { path: 'material', component: MaterialComponent },
     { path: 'editor', component: EditorsComponent },
-    { path: 'upload', component: UploadComponent }
+    { path: 'upload', component: UploadComponent },
+    { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -39,7 +41,8 @@ const routes: Routes = [
         AdvancedComponent,
         MaterialComponent,
         EditorsComponent,
-        UploadComponent
+        UploadComponent,
+        RegisterComponent
     ],
     exports: [
         RouterModule

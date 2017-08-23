@@ -22,7 +22,6 @@ export const routes = [
       {path: 'tables', loadChildren: './tables/tables.module#TablesModule'},
       {path: 'maps', loadChildren: './maps/maps.module#MapsModule'},
       {path: 'pages', loadChildren: './pages/pages.module#PagesModule'},
-      {path: 'test', loadChildren: './test/test.module#TestModule'},
       {path: 'report', loadChildren: './report/report.module#ReportModule'}
     ]
   },
