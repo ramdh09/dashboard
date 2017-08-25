@@ -3,11 +3,18 @@
   <div class="card">
     <div class="card-heading">Performance Sales</div>
     <div style="display: block;">
-      <div class="loader-demo">
-        <div class="loader-inner ball-scale-multiple"></div>
-        <!-- TODO : ENABLE Spinner Loaders-->
-      </div>
       <div class="card-body">
+        <div class="row">
+          <div class="col-xs-3">
+            <button class="btn btn-block" [(colorPicker)]="seriesColor" [value]="seriesColor"
+                    [cpOutputFormat]="'rgba'"
+                    [cpPositionOffset]="5" [cpPosition]="'bottom'" [cpToggle]="this.cpToggle" [cpOKButton]="true"
+                    (colorPickerSelect)="this.renderColor" [cpCancelButton]="true"
+                    [cpCancelButtonClass]= "'btn btn-danger'"
+                    [cpOKButtonClass]= "'btn btn-primary'">Color Picker
+            </button>
+          </div>
+        </div>
         <canvas id="sales-chart" #testChart='base-chart' baseChart width="800" height="400"
                 [datasets]="datasetsSales"
                 [options]="ChartOptions"
@@ -16,6 +23,11 @@
                 (chartClick)="clickChart($event)"
         >
         </canvas>
+        <div class="row">
+          <div class="col-xs-12"></div>
+        </div>
+
+
       </div>
     </div>
   </div>

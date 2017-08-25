@@ -3,7 +3,7 @@
  */
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { ColorPickerModule, ColorPickerService } from 'ngx-color-picker';
 import { SharedModule } from '../../shared/shared.module';
 import { AreaComponent } from './area/area.component';
 import { BarComponent } from './bar/bar.component';
@@ -14,6 +14,7 @@ import { TenantsComponent } from './tenants/tenants.component';
 import { OverviewComponent } from './overview/overview.component';
 import { PerformanceSalesComponent } from './performance-sales/performance-sales.component';
 import { PeopleCounterComponent } from './people-counter/people-counter.component';
+
 
 const routes: Routes = [
   { path: 'bar', component: BarComponent },
@@ -30,7 +31,8 @@ const routes: Routes = [
   imports: [
     SharedModule,
     RouterModule.forChild(routes),
-    ChartsModule
+    ChartsModule,
+    ColorPickerModule
   ],
   declarations: [
     DonutComponent,

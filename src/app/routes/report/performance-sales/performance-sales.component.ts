@@ -1,6 +1,7 @@
 import {Component, ViewChild, OnInit, OnChanges} from '@angular/core';
 import {DataService} from '../../../services/data.service';
 import {BaseChartDirective} from 'ng2-charts/ng2-charts';
+import {tick} from "@angular/core/testing";
 var swal = require('sweetalert');
 declare var $: any;
 
@@ -12,10 +13,13 @@ declare var $: any;
 export class PerformanceSalesComponent implements OnInit {
   @ViewChild('testChart') public testChart: BaseChartDirective;
 
+  seriesColor = '#555555';
+  cpToggle = false;
+
   public dataSales: any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
   public datasetsSales: any = [{
     label: 'Spending',
-    data: this.dataSales
+    data: this.dataSales,
   }];
   public categoriesLabels: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public weeklyLabels: any = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
@@ -79,9 +83,15 @@ export class PerformanceSalesComponent implements OnInit {
       this.testChart.chart = 0;
       this.testChart.datasets[0].data = this.dataSpending.data.spending;
       this.testChart.labels = this.dataSpending.data.categories;
+      console.log(this.testChart);
       this.testChart.ngOnInit();
     }
   };
+
+  renderColor(){
+    console.log('Rendering in : '+ this.seriesColor);
+    // TODO : Re-render chart after color change
+  }
 
   constructor(public dataservice: DataService) {
     // TODO : Add drilldown request
