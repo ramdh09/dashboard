@@ -59,6 +59,17 @@ export class DataService {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
+  generateData(length:number,min,max){
+    let i : number;
+    var x:number[];
+    var y:any;
+    for (i = 0, i <= length ; i++;){
+      y = this.getRandomNumber(min,max);
+      x.push(y);
+    }
+    return y;
+  }
+
   testHttp(url) {
     return this.http.get(url)
       .map(res => res.json());

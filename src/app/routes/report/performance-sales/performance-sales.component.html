@@ -8,11 +8,15 @@
           <div class="col-xs-3">
             <button class="btn btn-block" [(colorPicker)]="seriesColor" [value]="seriesColor"
                     [cpOutputFormat]="'rgba'"
-                    [cpPositionOffset]="5" [cpPosition]="'bottom'" [cpToggle]="this.cpToggle" [cpOKButton]="true"
-                    (colorPickerSelect)="this.renderColor" [cpCancelButton]="true"
+                    [cpPositionOffset]="5" [cpPosition]="'bottom'" [cpToggle]="cpToggle" [cpOKButton]="true"
+                    [cpCancelButton]="true"
                     [cpCancelButtonClass]= "'btn btn-danger'"
-                    [cpOKButtonClass]= "'btn btn-primary'">Color Picker
+                    [cpOKButtonClass]= "'btn btn-primary color-picker-button'"
+            >Color Picker
             </button>
+          </div>
+          <div class="col-xs-3">
+            <input class="form-control" name="color" [(ngModel)]="color" [value]="seriesColor" ng-if="seriesColor.dirty ? console.log('xxxxxx')"/>
           </div>
         </div>
         <canvas id="sales-chart" #testChart='base-chart' baseChart width="800" height="400"
@@ -21,6 +25,8 @@
                 [chartType]="chartType.bar"
                 [labels]="categoriesLabels"
                 (chartClick)="clickChart($event)"
+                ng-if="color.dirty"
+                [colors] = "chartColors"
         >
         </canvas>
         <div class="row">

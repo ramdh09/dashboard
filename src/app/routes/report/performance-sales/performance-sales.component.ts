@@ -1,9 +1,7 @@
-import {Component, ViewChild, OnInit, OnChanges} from '@angular/core';
+import {Component, ViewChild, OnInit, OnChanges, SimpleChanges} from '@angular/core';
 import {DataService} from '../../../services/data.service';
 import {BaseChartDirective} from 'ng2-charts/ng2-charts';
-import {tick} from "@angular/core/testing";
-var swal = require('sweetalert');
-declare var $: any;
+const swal = require('sweetalert');
 
 @Component({
   selector: 'app-performance-sales',
@@ -13,7 +11,8 @@ declare var $: any;
 export class PerformanceSalesComponent implements OnInit {
   @ViewChild('testChart') public testChart: BaseChartDirective;
 
-  seriesColor = '#555555';
+  seriesColor = '#2ca888';
+  oldSeriesColor = '#555555';
   cpToggle = false;
 
   public dataSales: any = [this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000), this.dataservice.getRandomNumber(500000, 2000000)];
@@ -21,6 +20,12 @@ export class PerformanceSalesComponent implements OnInit {
     label: 'Spending',
     data: this.dataSales,
   }];
+
+  public chartColors: any[] = [
+    {
+      backgroundColor:this.seriesColor
+    }];
+
   public categoriesLabels: any = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
   public weeklyLabels: any = ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5'];
   public chartOption: any = {
@@ -56,7 +61,7 @@ export class PerformanceSalesComponent implements OnInit {
 
   public clickChart(e: any) {
     try {
-      let indexData = e.active[0]._index;
+      const indexData = e.active[0]._index;
       this.dataservice.getQuery('spending-data')
         .subscribe(
           data => {
@@ -64,7 +69,7 @@ export class PerformanceSalesComponent implements OnInit {
             this.reloadChart();
           },
           error => {
-            this.dataservice.handleError
+            this.dataservice.handleError;
           }
         )
       ;
@@ -83,13 +88,24 @@ export class PerformanceSalesComponent implements OnInit {
       this.testChart.chart = 0;
       this.testChart.datasets[0].data = this.dataSpending.data.spending;
       this.testChart.labels = this.dataSpending.data.categories;
-      console.log(this.testChart);
+      this.testChart.datasets[0].backgroundColor = this.dataSpending.data.backgroundColor;
+      console.log(this.dataSpending);
+      //this.testChart.chart.update();
       this.testChart.ngOnInit();
     }
   };
 
-  renderColor(){
-    console.log('Rendering in : '+ this.seriesColor);
+  renderColor(event){
+    console.log(event);
+    setTimeout(() =>  {
+      if (this.seriesColor !== this.oldSeriesColor){
+        console.log('Warna baru');
+        console.log(this.seriesColor);
+      } else {
+        console.log('Warna lama');
+      }
+    }, 2000);
+    // console.log('Rendering in : ' + this.seriesColor);
     // TODO : Re-render chart after color change
   }
 
@@ -97,8 +113,7 @@ export class PerformanceSalesComponent implements OnInit {
     // TODO : Add drilldown request
   }
 
-  ngOnInit() {
-    $('.loader-inner').loaders();
+  ngOnInit(){
   }
 
 }
